@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: wcs
+  host: localhost
+  username: postgres
+  password: postgres
+  pool: 10
+  timeout: 5000

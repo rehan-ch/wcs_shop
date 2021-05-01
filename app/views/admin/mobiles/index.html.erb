@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="row">
+      <div class="col-md-6">
+        <%= link_to "Add New Mobile", new_admin_mobile_path, class: "btn btn-lg btn-primary pull-right margin-tp" %>
+        <%#= link_to "Filter", "", class: "btn btn-lg btn-primary pull-right margin-tp" %>
+      </div>
+      <div class="col-md-6">
+          <%= form_tag admin_mobiles_path, method: :get, remote: true, class: "form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" do %>
+              <div class="input-group">
+                <%= text_field_tag :query, nil, placeholder:"Search for Mobiles…", class: "form-control bg-light small" %>
+
+                <div class="input-group-append">
+                  <%= submit_tag "search", class: "btn btn-primary" %>
+                </div>
+              </div>
+            <% end %>
+        </div>
+    </div>
+
+
+  <div class="card shadow mb-4" id="mobile_table">
+    <%= render 'mobile_data', mobiles: @mobiles %>
+  </div>
+</div>

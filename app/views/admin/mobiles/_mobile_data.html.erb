@@ -1,0 +1,59 @@
+<div class="card-body">
+  <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Name</th>
+              <th>Model</th>
+              <th>Company</th>
+              <th>Imei 1</th>
+              <th>Imei 2</th>
+              <th>Price</th>
+              <th>Color</th>
+              <th>Purchasing Date</th>
+              <th>Selling Date</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% mobiles.each_with_index do |mobile, index| %>
+              <tr>
+                <td><%= index+1 %></td>
+                <td><%=link_to mobile.name, admin_mobile_path(mobile) %></td>
+                <td><%= mobile.model %></td>
+                <td><%= mobile.company %></td>
+                <td><%= mobile.imei1 %></td>
+                <td><%= mobile.imei2 %></td>
+                <td><%= mobile.invoice_price %></td>
+                <td><%= mobile.selling_price %></td>
+                <td><%= mobile.purchasing_date %></td>
+                <td><%= mobile.selling_date %></td>
+                <td class="text-center">
+                  <span>
+                  <%= link_to '<i class="fa fa-edit icon_link with-tip no-text"></i>'.html_safe, edit_admin_mobile_path(mobile), class: "edit ", title: "edit"%>&nbsp; &nbsp;
+                  </span>
+                  <span>
+                 
+                  <%= link_to '<i class="fa fa-trash icon_link with-tip no-text"></i>'.html_safe,  admin_mobile_path(mobile), method: :delete, data: { confirm: 'Are you sure?' } ,class: "delete " , title: "delete" %>
+                      
+                  </span>
+                  <% unless mobile.sold == true%>
+                    <span>
+                      <%= link_to 'Sell',  mobiles_sell_admin_mobile_path(mobile), class: 'btn btn-primary'%>
+
+                    </span>
+                    <% else %>
+                    <span>
+                      <%= link_to 'Sold out',"", class: 'btn btn-secondary disabled'%>
+                    </span>
+
+                  <% end %>
+
+              </td>
+              </tr>
+              <% end %>
+          </tbody>
+      </table>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <%= form_with model: [:admin, @mobile] do |f| %>
+            <div class="col-md-12">
+              <div class="form-group">
+                <%=f.label :name, "Name <span>*</span>".html_safe %>
+                <%=f.text_field :name ,class: 'form-control', placeholder: 'Enter Name', required: 'true'%>
+              </div>
+              <div class="form-group">
+                <%=f.label :model, "Model <span>*</span>".html_safe %>
+                <%=f.text_field :model ,class: 'form-control', placeholder: 'Enter Model', required: 'true'%>
+              </div>
+              <div class="form-group">
+                <%=f.label :company, "Company <span>*</span>".html_safe %>
+                <%=f.text_field :company ,class: 'form-control', placeholder: 'Enter Company', required: 'true'%>
+              </div>
+              <div class="form-group">
+                <%=f.label :imei1, "IMEI 1 <span>*</span>".html_safe %>
+                <%=f.text_field :imei1 ,class: 'form-control', placeholder: 'Enter IMEI 1', required: 'true'%>
+              </div>
+              <div class="form-group">
+                <%=f.label :imei2, "IMEI 2 <span>*</span>".html_safe %>
+                <%=f.text_field :imei2 ,class: 'form-control', placeholder: 'Enter IMEI 2', required: 'true'%>
+              </div>
+              <div class="form-group">
+                <%=f.label :color, "COLOR <span>*</span>".html_safe %>
+                <%=f.text_field :color ,class: 'form-control', placeholder: 'Enter Color', required: 'true'%>
+              </div>
+              <div class="form-group">
+                <%=f.label :invoice_price, "Invoice Price <span>*</span>".html_safe %>
+                <%=f.number_field :invoice_price ,class: 'form-control', placeholder: 'Enter Invoice Price', required: 'true',  min: "0" %>
+              </div>
+              <div class="form-group">
+                <%=f.label :selling_price, "Selling Price <span>*</span>".html_safe %>
+                <%=f.number_field :selling_price ,class: 'form-control', placeholder: 'Enter Selling Price', required: 'true',  min: "0" %>
+              </div>
+              <div class="form-group">
+                <%=f.label :purchasing_date, "Purchasing Date <span>*</span>".html_safe %>
+                <%= f.datetime_select :purchasing_date %>
+              </div>
+              <div class="form-group">
+                <%=f.label :sold, "Sold <span>*</span>".html_safe %>
+                <%= f.check_box :sold %>
+              </div>
+              <div class="form-group" id="selling_price" style="display: none">
+                <%=f.label :selling_date, "Purchasing Date <span>*</span>".html_safe %>
+                <%= f.datetime_select :selling_date %>
+              </div>
+              <%= f.submit class: "btn btn-primary" %>
+            </div>
+
+          <%end%>
+        </div>
+      </div>        
+    </div>
+  </div>    
+</div>
+<script type="text/javascript">
+  $('#mobile_sold').click(function() {
+      $("#selling_price").toggle(this.checked);
+  });
+</script>
